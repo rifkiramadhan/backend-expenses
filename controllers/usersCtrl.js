@@ -62,7 +62,7 @@ const userController = {
       expiresIn: '30d',
     });
 
-    //! Send the response
+    //! Send the response1
     res.json({
       message: 'Login Success',
       token,
@@ -104,10 +104,12 @@ const userController = {
     user.password = hashedPassword;
 
     //! ReSave
-    await user.save();
+    await user.save({
+      validateBeforeSave: false,
+    });
 
     //! Send the response
-    res.json({ message: 'Password Changed Successfuully' });
+    res.json({ message: 'Password Changed Successfully' });
   }),
 
   //! Update user profile
@@ -126,7 +128,7 @@ const userController = {
     );
 
     //! Send the response
-    res.json({ message: 'User Profile Updated Successfuully', updatedUser });
+    res.json({ message: 'User Profile Updated Successfully', updatedUser });
   }),
 };
 
